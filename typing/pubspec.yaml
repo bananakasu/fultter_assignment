@@ -88,4 +88,4 @@ flutter:
   # see https://flutter.dev/custom-fonts/#from-packages
   # 追加したコード:
   assets:
-    - assets/typing_prompts.json
+    - assets/typing_prompts.json    
