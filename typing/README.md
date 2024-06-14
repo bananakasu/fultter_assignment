@@ -1,16 +1,16 @@
-# typing
+# Fultter Typing
 
-A new Flutter project.
+### 概要
+ - 全5問でタイピングができる
 
-## Getting Started
+### 作りたい機能
+ - [ ] タイピングができる（josnから読み込んだデータを入力できる。）
+ - [ ] タイピングプリセットはjosnからランダムで５問取得
+ - [ ] スタート画面の作成
+ - [ ] 終了画面の作成
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### できたらいいな
+ - [ ] タイピングプリセットをDB接続して取得する。
+ - [ ] るびを表示させる
+ - [ ] 制限時間設定
+ - [ ] 全てのすべての入力に対応（ちゃ tyaとcha など）
