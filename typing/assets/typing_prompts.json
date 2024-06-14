@@ -1,35 +1,28 @@
 [
-
     {
-      "Name" : "ほかは嘘つき",
-      "rubi" : "hokahausotuki"
-
-    }
-    ,
+      "Name": "ハシルノスキスキー",
+      "rubi": "hasirunosukisuki-",
+      "img": "01.jpg"
+    },
     {
-      "Name" : "大竹は早く内定もらえ",
-      "rubi" : "ootakehahayakunaiteimorae"
-
-    }
-    ,
+      "Name": "闇落ち寛ちゃん",
+      "rubi": "yamiotikanntyann",
+      "img": "02.jpg"
+    },
     {
-      "Name" : "毎日デスマッチします",
-      "rubi" : "mainitidesumattisimasu"
-
-    }
-    ,
+      "Name": "大竹早く内定もらえ",
+      "rubi": "ootakehahayakunaiteimorae",
+      "img": "03.jpg"
+    },
     {
-      "Name" : "ビジネス潰瘍",
-      "rubi" : "bizinesukaiyou"
-
-    }
-    ,
+      "Name": "御神体角田様",
+      "rubi": "gosinntaitunodasama",
+      "img": "04.jpg"
+    },
     {
-
-      "Name" : "valoするよー",
-      "rubi" : "valosuruyo-"
-
+      "Name": "性癖展開 布一枚",
+      "rubi": "seihekitennkainunoitimai",
+      "img": "05.jpg"
     }
-
   ]
   
