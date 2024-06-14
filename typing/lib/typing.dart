@@ -68,7 +68,7 @@ class _TypingAppState extends State<TypingApp> {
       });
       if (_currentCharIndex == _currentRubi.length) { // 変更：ルビの長さで判定
         _correctCount++;
-        if (_correctCount >= 3) {
+        if (_correctCount >= 5) {
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => ClearScreen()),
@@ -97,13 +97,17 @@ class _TypingAppState extends State<TypingApp> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             _currentImg.isNotEmpty
-                ? Image.asset('assets/$_currentImg') // 画像の表示
+                ? Image.asset(
+                    'assets/$_currentImg',
+                    width: 500, // ここで画像の横幅を変更
+                    height: 300, // ここで画像の縦幅を変更
+                  ) // 画像の表示
                 : Container(),
             SizedBox(height: 10), // 間隔を調整
-            Text(
+            /*Text(
               _currentRubi, // ルビの表示
               style: TextStyle(fontSize: 20, color: Colors.grey),
-            ),
+            ),*/
             SizedBox(height: 10), // 間隔を調整
             Text(
               _currentPrompt,
