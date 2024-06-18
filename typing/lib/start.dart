@@ -6,7 +6,7 @@ class StartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('タイピングゲームへようこそ'),
+        title: Text('fultterタイピング'),
       ),
       body: Center(
         child: ElevatedButton(
@@ -16,7 +16,23 @@ class StartScreen extends StatelessWidget {
               MaterialPageRoute(builder: (context) => TypingApp()),
             );
           },
-          child: Text('スタート'),
+          child: Text('押せば始まる'),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.black, // ボタンの背景色
+            foregroundColor: Colors.white, // ボタンのテキスト色
+            elevation: 4, // 通常のエレベーション
+            minimumSize: Size(200, 50), // ボタンの最小サイズ
+          ).copyWith(
+            elevation: MaterialStateProperty.resolveWith<double>(
+              // ボタンが押されたときのエレベーション
+              (Set<MaterialState> states) {
+                if (states.contains(MaterialState.pressed)) {
+                  return 16;
+                }
+                return 4;
+              },
+            ),
+          ),
         ),
       ),
     );
