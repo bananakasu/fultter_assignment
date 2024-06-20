@@ -89,9 +89,13 @@ flutter:
   # 追加したコード:
   assets:
     - assets/typing_prompts.json 
-    - assets/romaji_map.json
     - assets/img/01.jpg
     - assets/img/02.jpg
     - assets/img/03.jpg
     - assets/img/04.jpg
     - assets/img/05.jpg
+    - assets/img/06.jpg
+    - assets/img/07.jpg
+    - assets/img/08.jpg
+    - assets/img/09.jpg
+    - assets/img/10.jpg
