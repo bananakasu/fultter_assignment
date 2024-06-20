@@ -5,24 +5,55 @@
       "img": "img/01.jpg"
     },
     {
-      "Name": "闇落ち寛ちゃん",
-      "rubi": "yamiotikanntyann",
+      "Name": "闇落ち",
+      "rubi": "yamioti",
       "img": "img/02.jpg"
     },
     {
-      "Name": "大竹早く内定もらえ",
-      "rubi": "ootakehayakunaiteimorae",
+      "Name": "大竹",
+      "rubi": "ootake",
       "img": "img/03.jpg"
     },
     {
-      "Name": "御神体角田様",
-      "rubi": "gosinntaitunodasama",
+      "Name": "証明写真",
+      "rubi": "syoumeisyasin",
       "img": "img/04.jpg"
     },
     {
       "Name": "性癖展開 布一枚",
       "rubi": "seihekitennkainunoitimai",
       "img": "img/05.jpg"
+    },
+    {
+      "Name": "おじいちゃん",
+      "rubi": "oziityan",
+      "img": "img/06.jpg"
     }
+    ,
+    {
+      "Name": "どや顔",
+      "rubi": "doyagao",
+      "img": "img/07.jpg"
+    }
+    ,
+    {
+      "Name": "笑顔",
+      "rubi": "egao",
+      "img": "img/08.jpg"
+    }
+    ,
+    {
+      "Name": "カーネルサンダース",
+      "rubi": "ka-nerusannda-su",
+      "img": "img/09.jpg"
+    }
+    ,
+    {
+      "Name": "お昼寝",
+      "rubi": "ohirune",
+      "img": "img/10.jpg"
+    }
+
   ]
+
   
