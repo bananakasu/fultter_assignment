@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart'; // FlutterのMaterialデザインパッケージをインポート
 import 'dart:convert'; // JSON処理のためのパッケージをインポート
 import 'dart:math'; // 乱数生成のためのパッケージをインポート
-import 'package:flutter/services.dart' show rootBundle; // アセットファイルを読み込むためのパッケージをインポート
+import 'package:flutter/services.dart'
+    show rootBundle; // アセットファイルを読み込むためのパッケージをインポート
+import 'dart:async'; // タイマーのためのパッケージをインポート
 import 'clear.dart'; // clear.dartファイルからClearScreenクラスをインポート
 
 // TypingAppという名前のStatefulWidgetを定義
@@ -20,7 +22,10 @@ class _TypingAppState extends State<TypingApp> {
   String _currentInput = ""; // ユーザーが入力した文字列
   int _currentCharIndex = 0; // 現在のプロンプトの何文字目を入力中かを示すインデックス
   int _correctCount = 0; // 正解したプロンプトの数
-  TextEditingController _controller = TextEditingController(); // テキストフィールドのコントローラー
+  TextEditingController _controller =
+      TextEditingController(); // テキストフィールドのコントローラー
+  int _timerCount = 10; // タイマーのカウントダウンの初期値
+  Timer? _timer; // タイマーのインスタンス
 
   @override
   void initState() {
@@ -31,10 +36,13 @@ class _TypingAppState extends State<TypingApp> {
 
   // プロンプトをJSONファイルから読み込む非同期関数
   Future<void> _loadPrompts() async {
-    final String response = await rootBundle.loadString('assets/typing_prompts.json'); // JSONファイルを読み込む
+    final String response = await rootBundle
+        .loadString('assets/typing_prompts.json'); // JSONファイルを読み込む
     final List<dynamic> data = json.decode(response); // JSONデータをデコード
     setState(() {
-      _prompts = data.map<Map<String, String>>((item) => item.cast<String, String>()).toList(); // プロンプトをリストに変換して保存
+      _prompts = data
+          .map<Map<String, String>>((item) => item.cast<String, String>())
+          .toList(); // プロンプトをリストに変換して保存
       _setRandomPrompt(); // ランダムなプロンプトを設定
     });
   }
@@ -49,7 +57,7 @@ class _TypingAppState extends State<TypingApp> {
     do {
       newPrompt = _prompts[random.nextInt(_prompts.length)]; // ランダムにプロンプトを選択
     } while (_usedPrompts.contains(newPrompt)); // すでに使用されたプロンプトでないか確認
-    
+
     setState(() {
       _currentPrompt = newPrompt["Name"]!; // 新しいプロンプトを設定
       _currentRubi = newPrompt["rubi"]!; // 新しいプロンプトのルビを設定
@@ -58,36 +66,54 @@ class _TypingAppState extends State<TypingApp> {
       _currentCharIndex = 0; // インデックスをリセット
       _usedPrompts.add(newPrompt); // 使用されたプロンプトを記録
       _controller.clear(); // テキストフィールドをクリア
+      _startTimer(); // タイマーを開始
     });
   }
 
   // テキストフィールドの変更を処理する関数
   void _onTextChanged() {
     if (_controller.text.isEmpty) return; // テキストフィールドが空なら何もしない
-    String inputChar = _controller.text[_controller.text.length - 1]; // 入力された最新の文字を取得
-    if (inputChar == _currentRubi[_currentCharIndex]) { // 現在の入力とルビの文字を比較
+    String inputChar =
+        _controller.text[_controller.text.length - 1]; // 入力された最新の文字を取得
+    if (inputChar == _currentRubi[_currentCharIndex]) {
+      // 現在の入力とルビの文字を比較
       setState(() {
         _currentInput += inputChar; // 入力された文字を現在の入力に追加
         _currentCharIndex++; // インデックスを進める
         _controller.clear(); // テキストフィールドをクリア
       });
-      if (_currentCharIndex == _currentRubi.length) { // すべての文字が正しく入力された場合
+      if (_currentCharIndex == _currentRubi.length) {
+        // すべての文字が正しく入力された場合
         _correctCount++; // 正解カウントを増やす
-        if (_correctCount >= 5) { // 正解数が5以上ならクリア画面に遷移
+        if (_correctCount >= 5) {
+          // 正解数が5以上ならクリア画面に遷移
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => ClearScreen()),
           );
         } else {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('正解！')), // 正解メッセージを表示
-          );
           _setRandomPrompt(); // 新しいプロンプトを設定
         }
       }
     } else {
       _controller.clear(); // 不正確な入力をクリア
     }
+  }
+
+  // タイマーを開始する関数
+  void _startTimer() {
+    _timer?.cancel(); // 既存のタイマーがあればキャンセル
+    _timerCount = 10; // カウントダウンを初期化
+    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      setState(() {
+        if (_timerCount > 0) {
+          _timerCount--; // カウントダウンを減らす
+        } else {
+          timer.cancel(); // カウントダウンが0になったらタイマーをキャンセル
+          _setRandomPrompt(); // 新しいプロンプトを設定
+        }
+      });
+    });
   }
 
   @override
@@ -128,14 +154,23 @@ class _TypingAppState extends State<TypingApp> {
               decoration: InputDecoration(
                 border: InputBorder.none, // 入力フィールドのボーダーを無くす
               ),
-              style: TextStyle(fontSize: 1, color: Colors.transparent), // フォントサイズを小さく、色を透明に設定
+              style: TextStyle(
+                  fontSize: 1,
+                  color: Colors.transparent), // フォントサイズを小さく、色を透明に設定
               cursorColor: Colors.transparent, // カーソルを透明に設定
             ),
             SizedBox(height: 20), // 間隔を調整
             // 現在の入力の表示
             Text(
               _currentInput, // 現在の入力を表示
-              style: TextStyle(fontSize: 24, color: Colors.green), // フォントサイズと色を設定
+              style:
+                  TextStyle(fontSize: 24, color: Colors.green), // フォントサイズと色を設定
+            ),
+            SizedBox(height: 20), // 間隔を調整
+            // タイマーの表示
+            Text(
+              '残り時間: $_timerCount 秒', // 残り時間を表示
+              style: TextStyle(fontSize: 20, color: Colors.red), // フォントサイズと色を設定
             ),
           ],
         ),
@@ -145,7 +180,16 @@ class _TypingAppState extends State<TypingApp> {
 
   @override
   void dispose() {
-    _controller.dispose(); // テキストコントローラーを破棄
+    _timer?.cancel(); // ウィジェットが破棄されるときにタイマーをキャンセル
+    _controller.removeListener(_onTextChanged); // リスナーを削除
+    _controller.dispose(); // コントローラーを破棄
     super.dispose();
   }
+}
+
+// メイン関数
+void main() {
+  runApp(MaterialApp(
+    home: TypingApp(), // TypingAppを起動
+  ));
 }
