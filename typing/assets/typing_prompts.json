@@ -5,52 +5,55 @@
       "img": "img/01.jpg"
     },
     {
-      "Name": "闇落ち",
-      "rubi": "yamioti",
-      "img": "img/02.jpg"
-    },
-    {
-      "Name": "大竹",
-      "rubi": "ootake",
-      "img": "img/03.jpg"
-    },
-    {
-      "Name": "証明写真",
-      "rubi": "syoumeisyasin",
-      "img": "img/04.jpg"
-    },
-    {
-      "Name": "性癖展開 布一枚",
-      "rubi": "seihekitennkainunoitimai",
-      "img": "img/05.jpg"
-    },
-    {
-      "Name": "おじいちゃん",
-      "rubi": "oziityan",
-      "img": "img/06.jpg"
-    }
-    ,
-    {
       "Name": "どや顔",
       "rubi": "doyagao",
-      "img": "img/07.jpg"
-    }
-    ,
-    {
-      "Name": "笑顔",
-      "rubi": "egao",
-      "img": "img/08.jpg"
-    }
-    ,
-    {
-      "Name": "カーネルサンダース",
-      "rubi": "ka-nerusannda-su",
-      "img": "img/09.jpg"
+      "img": "img/02.jpg"
     }
     ,
     {
       "Name": "お昼寝",
       "rubi": "ohirune",
+      "img": "img/03.jpg"
+    }
+    ,
+    {
+      "Name": "闇落ち",
+      "rubi": "yamioti",
+      "img": "img/04.jpg"
+    },
+    {
+      "Name": "おじいちゃん",
+      "rubi": "oziityan",
+      "img": "img/05.jpg"
+    }
+    ,
+    {
+      "Name": "笑顔",
+      "rubi": "egao",
+      "img": "img/06.jpg"
+    }
+    ,
+    {
+      "Name": "殴るぞ",
+      "rubi": "naguruzo",
+      "img": "img/07.jpg"
+    }
+    ,
+    {
+      "Name": "俺がこの手でばーらばらに",
+      "rubi": "oregakonotedeba-rabarani",
+      "img": "img/08.jpg"
+    }
+    ,
+    {
+      "Name": "変態",
+      "rubi": "henntai",
+      "img": "img/09.jpg"
+    }
+    ,
+    {
+      "Name": "兎",
+      "rubi": "usagi",
       "img": "img/10.jpg"
     }
 
